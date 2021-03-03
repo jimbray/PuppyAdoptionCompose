@@ -23,16 +23,16 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.requiredWidth
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
+import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -82,9 +82,11 @@ class MainActivity : AppCompatActivity() {
 fun Home() {
 
     val viewModel: PetViewModel = viewModel()
-    Scaffold(topBar = {
-        Topbar(viewModel.topBarTitle)
-    }) {
+    Scaffold(
+        topBar = {
+            Topbar(viewModel.topBarTitle)
+        }
+    ) {
         Box {
             PetList(viewModel.pets)
 
@@ -99,12 +101,9 @@ fun Home() {
 //                })
                 PetDetails(pet = viewModel.curPet!!)
             }
-
         }
     }
-
 }
-
 
 @Composable
 fun Topbar(title: String) {
@@ -129,10 +128,8 @@ fun Topbar(title: String) {
     }
 }
 
-
 @Composable
 fun PetDetails(pet: PetInfo) {
-
 
     Box {
         Column(
@@ -155,10 +152,8 @@ fun PetDetails(pet: PetInfo) {
                 Text(text = pet.gender, fontSize = 20.sp)
             }
             Text(text = pet.des, Modifier.padding(8.dp))
-
         }
     }
-
 }
 
 @Composable
@@ -169,18 +164,18 @@ fun PetList(pets: List<PetInfo>) {
             PetItem(pet)
         }
     }
-
-
 }
 
 @Composable
 fun PetItem(pet: PetInfo) {
     val viewModel: PetViewModel = viewModel()
-    Column(Modifier.clickable {
-        viewModel.curPet = pet
-        viewModel.showingDetails = true
-        viewModel.topBarTitle = pet.name
-    }) {
+    Column(
+        Modifier.clickable {
+            viewModel.curPet = pet
+            viewModel.showingDetails = true
+            viewModel.topBarTitle = pet.name
+        }
+    ) {
         Row(
             Modifier
                 .fillMaxWidth()
@@ -201,7 +196,6 @@ fun PetItem(pet: PetInfo) {
 
                     Text(text = " | ")
                     Text(text = pet.breed)
-
                 }
 
                 Text(
@@ -217,7 +211,6 @@ fun PetItem(pet: PetInfo) {
                     Text(" | ", fontSize = 12.sp)
                     Text(pet.weight, fontSize = 12.sp)
                 }
-
             }
         }
         Spacer(
@@ -227,7 +220,6 @@ fun PetItem(pet: PetInfo) {
                 .requiredHeight(1.dp)
         )
     }
-
 }
 
 @Preview(showBackground = true)
