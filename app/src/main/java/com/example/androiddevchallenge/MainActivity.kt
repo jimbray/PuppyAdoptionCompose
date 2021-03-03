@@ -89,14 +89,15 @@ fun Home() {
             PetList(viewModel.pets)
 
             if (viewModel.showingDetails) {
-                val persentOffsetX = animateFloatAsState(if (viewModel.showingDetails) 0f else 1f)
-                PetDetails(pet = viewModel.curPet!!, Modifier.layout { measurable, constraints ->
-                    val placeable = measurable.measure(constraints)
-                    layout(placeable.width, placeable.height) {
-                        val offset = (persentOffsetX.value * placeable.width).toInt()
-                        placeable.placeRelative(offset, 0)
-                    }
-                })
+//                val persentOffsetX = animateFloatAsState(if (viewModel.showingDetails) 0f else 1f)
+//                PetDetails(pet = viewModel.curPet!!, Modifier.layout { measurable, constraints ->
+//                    val placeable = measurable.measure(constraints)
+//                    layout(placeable.width, placeable.height) {
+//                        val offset = (persentOffsetX.value * placeable.width).toInt()
+//                        placeable.placeRelative(offset, 0)
+//                    }
+//                })
+                PetDetails(pet = viewModel.curPet!!)
             }
 
         }
@@ -130,7 +131,7 @@ fun Topbar(title: String) {
 
 
 @Composable
-fun PetDetails(pet: PetInfo, modifier: Modifier = Modifier) {
+fun PetDetails(pet: PetInfo) {
 
 
     Box {
