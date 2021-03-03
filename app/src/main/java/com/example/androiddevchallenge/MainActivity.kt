@@ -19,7 +19,6 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -47,7 +46,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.colorspace.ColorSpaces
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.layout.layout
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -84,7 +82,9 @@ class MainActivity : AppCompatActivity() {
 fun Home() {
 
     val viewModel: PetViewModel = viewModel()
-    Scaffold(topBar = { Topbar(viewModel.topBarTitle) }) {
+    Scaffold(topBar = {
+        Topbar(viewModel.topBarTitle)
+    }) {
         Box {
             PetList(viewModel.pets)
 
